@@ -23,8 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loop through the myLeads array and append each lead URL to the unordered list element using the innerHTML property
     for (let i = 0; i < myLeads.length; i++) {
       // added click event to each list item, so that when clicked, it will open the URL in a new tab
-      listItems += '<a target="_blank"  href="' + myLeads[i] + '"><li>' + myLeads[i] + '</li></a>';
-    }
+
+      // used Template Strings to Increase Simplicity and Minimizing Confusions.
+      listItems += `
+      <li>
+          <a target = "_blank" href = '${myLeads[i]}'>
+          ${myLeads[i]}
+          </a>
+      </li>
+      `
+    };
     ulEl.innerHTML = listItems;
 
   }
