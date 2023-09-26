@@ -1,3 +1,4 @@
+/* Set default styles for the body element */
 body {
     margin: 0;
     padding: 10px;
@@ -8,25 +9,28 @@ body {
 
 Style our app according to the provided design!
 
-green color -> #5f9341
+Primary color: #5f9341 (green)
 
 */
 
-
-
+/* Set styles for input elements */
 input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
     border-color: #5f9341;
     border-top-color: #5f9341;
+    /* Use primary color for top border */
 }
 
+/* Set styles for button elements */
 button {
     margin: 5px;
     border: none;
     color: white;
     padding: 40px, 40px;
+    /* Set padding for button */
     font-weight: bold;
     background-color: #5f9341;
+    /* Use primary color for background */
 }
