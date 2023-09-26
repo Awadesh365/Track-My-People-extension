@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inputBtn.addEventListener("click", function () {
     // Add the value of the input element to the myLeads array using the push() method
     myLeads.push(inputEl.value);
+    inputEl.value = ""; // Clear the input element, when the input button is clicked on.
     renderLeads();
   });
 
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       listItems += "<li>" + myLeads[i] + "</li>";
     }
     ulEl.innerHTML = listItems;
+
   }
 
 });
