@@ -2,29 +2,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // Get references to the input element, input button, and unordered list element in the HTML document
-  const inputEl = document.getElementById("input-el");
-  const inputBtn = document.getElementById("input-btn");
-  const ulEl = document.getElementById("ul-el");
+  const inputEl = document.getElementById("input-el"); // input element reference
+  const inputBtn = document.getElementById("input-btn"); // input button reference
+  const ulEl = document.getElementById("ul-el"); // unordered list element reference
 
-  // Initialize an array called myLeads with three lead URLs
-  let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"];
+  // Initialize an array called myLeads
+  let myLeads = [];
 
   // Add event listener to input button
   inputBtn.addEventListener("click", function () {
     // Add the value of the input element to the myLeads array using the push() method
     myLeads.push(inputEl.value);
+    renderLeads();
   });
 
-  // Loop through the myLeads array and append each lead URL to the unordered list element using the innerHTML property
-  for (let i = 0; i < myLeads.length; i++) {
-    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>";
-
-    // Alternative way to append the lead URLs to the unordered list element using createElement(), textContent, and append() methods
-    /*
-    const li = document.createElement("li");
-    li.textContent = myLeads[i];
-    ulEl.append(li);
-    */
+  // Render the leads in the unordered list element
+  function renderLeads() {
+    let listItems = "";
+    // Loop through the myLeads array and append each lead URL to the unordered list element using the innerHTML property
+    for (let i = 0; i < myLeads.length; i++) {
+      listItems += "<li>" + myLeads[i] + "</li>";
+    }
+    ulEl.innerHTML = listItems;
   }
 
 });
