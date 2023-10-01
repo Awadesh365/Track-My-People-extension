@@ -37,6 +37,24 @@ button {
     /* Use primary color for background */
 }
 
+#delete-btn {
+    color: #5f9341;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+#shift-btn {
+    color: #5f9341;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+#deleteone-btn {
+    color: #5f9341;
+    background-color: white;
+    padding: 10px 20px;
+}
+
 /* Set the margin-top to 20 pixels, remove bullet points, and set padding-left to 0 for all unordered lists */
 ul {
     margin-top: 20px;

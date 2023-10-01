@@ -37,4 +37,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+  deleteBtn.addEventListener("dblclick", function () {
+    localStorage.clear();
+    myLeads = [];
+    render(myLeads);
+  });
+
+  inputBtn.addEventListener("click", function () {
+    myLeads.push(inputEl.value);
+    inputEl.value = "";
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+  });
+  //if user clicks this button then it will delete what they click on after thats located within the input el field
+  deleteOneAtATime.addEventListener("click", function () {
+    myLeads.pop(inputEl.value);
+    inputEl.value = "";
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+  });
+  //if you want to delete a specific element of the array, you need to search its id
+  //instead of justing pushing the value, push an object, containing a value and an unique id
+  //that way, you can search the id of the item and delete it
+
+  shiftBtn.addEventListener("click", function () {
+    myLeads.shift(inputEl.value);
+    inputEl.value = "";
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+  });
+
+
 });
