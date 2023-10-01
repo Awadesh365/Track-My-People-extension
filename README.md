@@ -1,6 +1,0 @@
-
-```
-$ npm install
-$ npm start
-````
-
