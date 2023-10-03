@@ -1,4 +1,3 @@
-/* Set default styles for the body element */
 body {
     margin: 0;
     padding: 10px;
@@ -6,68 +5,37 @@ body {
     min-width: 400px;
 }
 
-
-/*
-
-Style our app according to the provided design!
-
-Primary color: #5f9341 (green)
-
-*/
-
-/* Set styles for input elements */
 input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border-color: #5f9341;
-    border-top-color: #5f9341;
-    /* Use primary color for top border */
+    border: 1px solid #5f9341;
+    margin-bottom: 4px;
 }
 
-/* Set styles for button elements */
 button {
-    margin: 5px;
-    border: none;
+    background: #5f9341;
     color: white;
-    padding: 40px, 40px;
-    /* Set padding for button */
+    padding: 10px 20px;
+    border: 1px solid #5f9341;
     font-weight: bold;
-    background-color: #5f9341;
-    /* Use primary color for background */
 }
 
 #delete-btn {
+    background: white;
     color: #5f9341;
-    background-color: white;
-    padding: 10px 20px;
 }
 
-#shift-btn {
-    color: #5f9341;
-    background-color: white;
-    padding: 10px 20px;
-}
-
-#deleteone-btn {
-    color: #5f9341;
-    background-color: white;
-    padding: 10px 20px;
-}
-
-/* Set the margin-top to 20 pixels, remove bullet points, and set padding-left to 0 for all unordered lists */
 ul {
     margin-top: 20px;
     list-style: none;
     padding-left: 0;
 }
 
-/* Set the margin-top to 5 pixels for all list items */
 li {
     margin-top: 5px;
 }
 
-/* Set the color of all links to a shade of green */
 a {
     color: #5f9341;
 }
