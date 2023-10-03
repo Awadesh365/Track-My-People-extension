@@ -1,68 +1,70 @@
 // Wait for the DOM (HTML content) to be fully loaded before executing any JavaScript code
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Get references to the input element, input button, and unordered list element in the HTML document
-  const inputEl = document.getElementById("input-el"); // input element reference
-  const inputBtn = document.getElementById("input-btn"); // input button reference
-  const ulEl = document.getElementById("ul-el"); // unordered list element reference
+  let myLeads = [] // An array that will store the leads
 
-  // Initialize an array called myLeads
-  let myLeads = [];
+  const inputEl = document.getElementById("input-el") // A reference to the input element in the DOM
+  const inputBtn = document.getElementById("input-btn") // A reference to the input button element in the DOM
+  const ulEl = document.getElementById("ul-el") // A reference to the unordered list element in the DOM
+  const deleteBtn = document.getElementById("delete-btn") // A reference to the delete button element in the DOM
 
-  // Add event listener to input button
-  inputBtn.addEventListener("click", function () {
-    // Add the value of the input element to the myLeads array using the push() method
-    myLeads.push(inputEl.value);
-    inputEl.value = ""; // Clear the input element, when the input button is clicked on.
-    renderLeads();
-  });
+  const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads")) // Retrieves the leads from local storage and converts them from a string to an array
+  const tabBtn = document.getElementById("tab-btn") // A reference to the tab button element in the DOM
 
-  // Render the leads in the unordered list element
-  function renderLeads() {
-    let listItems = "";
-    // Loop through the myLeads array and append each lead URL to the unordered list element using the innerHTML property
-    for (let i = 0; i < myLeads.length; i++) {
-      // added click event to each list item, so that when clicked, it will open the URL in a new tab
-
-      // used Template Strings to Increase Simplicity and Minimizing Confusions.
-      listItems += `
-      <li>
-          <a target = "_blank" href = '${myLeads[i]}'>
-          ${myLeads[i]}
-          </a>
-      </li>
-      `
-    };
-    ulEl.innerHTML = listItems;
-
+  // Check if there are any leads stored in local storage
+  if (leadsFromLocalStorage) {
+    // If there are, assign them to the myLeads array and render them in the UI
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
   }
 
-  deleteBtn.addEventListener("dblclick", function () {
-    localStorage.clear();
-    myLeads = [];
-    render(myLeads);
-  });
+  // Set up an event listener for the tab button
+  tabBtn.addEventListener("click", function () {
+    // Use the chrome.tabs.query() method to get information about the currently active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      // Add the URL of the active tab to the myLeads array
+      myLeads.push(tabs[0].url)
+      // Save the updated myLeads array to local storage
+      localStorage.setItem("myLeads", JSON.stringify(myLeads))
+      // Render the updated list of leads in the UI
+      render(myLeads)
+    })
+  })
+
+  // Define the render function, which takes an array of leads as a parameter
+  function render(leads) {
+    // Initialize an empty string to store the list items
+    let listItems = ""
+    // Loop through the leads array and generate an HTML string for each lead
+    for (let i = 0; i < leads.length; i++) {
+      listItems += `
+      <li>
+        <a target='_blank' href='${leads[i]}'>
+          ${leads[i]}
+        </a>
+      </li>
+    `
+    }
+    // Set the innerHTML of the ulEl element to the listItems string, which updates the UI with the list of leads
+    ulEl.innerHTML = listItems
+  }
+  deleteBtn.addEventListener("click", function () {
+    // Clear the local storage
+    localStorage.clear()
+    // Empty the myLeads array
+    myLeads = []
+    // Render the updated list of leads in the UI
+    render(myLeads)
+  })
 
   inputBtn.addEventListener("click", function () {
-    myLeads.push(inputEl.value);
-    inputEl.value = "";
-    localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    render(myLeads);
-  });
-
-  deleteOneAtATime.addEventListener("click", function () {
-    myLeads.pop(inputEl.value);
-    inputEl.value = "";
-    localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    render(myLeads);
-  });
-
-  shiftBtn.addEventListener("click", function () {
-    myLeads.shift(inputEl.value);
-    inputEl.value = "";
-    localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    render(myLeads);
-  });
-
-
+    // Add the input value to the myLeads array
+    myLeads.push(inputEl.value)
+    // Clear the input field
+    inputEl.value = ""
+    // Save the updated myLeads array to local storage
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    // Render the updated list of leads in the UI
+    render(myLeads)
+  })
 });
