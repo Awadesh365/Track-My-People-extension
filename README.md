@@ -1,4 +1,4 @@
-# Chrome Extension: Track Lead
+# Browser Extension: Track-My-People
 
 Track Lead is a Chrome extension that allows you to save and manage leads and URLs for your business or personal use.
 
