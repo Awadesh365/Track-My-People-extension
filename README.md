@@ -2,6 +2,7 @@
 
 Track Lead is a Chrome extension that allows you to save and manage leads and URLs for your business or personal use.
 
+Demo:
 [![Watch the video](https://img.shields.io/badge/Watch%20on%20YouTube-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=bDGb4ktQtiQ)
 
 ## Features
